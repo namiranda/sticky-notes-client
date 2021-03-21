@@ -31178,6 +31178,7 @@ video {
 
 body {
   font-family: 'Montserrat', sans-serif;
+  height: 100vh;
 }
 
 .mont-alternates {
