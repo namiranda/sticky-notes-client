@@ -25,33 +25,42 @@ export default () => {
   };
 
   return (
-    <div className="grid ">
-      <p className="text-center text-xl">Create your first sticky note board</p>
-      <div className="w-4/5 p-6 space-y-6 place-self-center justify-items-center rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold">Sign Up</h1>
-        <form onSubmit={onSubmit}>
-          <div className="flex flex-col">
-            <label className="text-gray-600	">Email Address</label>
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="border border-gray-300"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label className="text-gray-600	">Password</label>
-            <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              className="border border-gray-300"
-            />
-          </div>
-          {errors}
-          <button className="uppercase border-2 border-black p-1 my-2 font-bold hover:bg-yellow-300">
-            Sign Up &gt;
-          </button>
-        </form>
+    <div className="relative">
+      <div className=" bg-yellow-300 h-44 py-14">
+        <h2 className="text-center text-3xl font-bold mont-alternates ">
+          topiks
+        </h2>
+        <p className="py-4 text-center text-xl">
+          Create your first sticky note board
+        </p>
+      </div>
+      <div className="absolute top-36 flex justify-center w-full">
+        <div className=" bg-white w-4/5 lg:w-3/5 p-6 space-y-6 justify-items-center rounded-lg shadow-lg">
+          <h1 className="text-3xl font-bold">Sign Up</h1>
+          <form onSubmit={onSubmit} className="space-y-4">
+            <div className="flex flex-col">
+              <label className="text-gray-600	">Email Address</label>
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="border border-gray-300"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="text-gray-600	">Password</label>
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                className="border border-gray-300"
+              />
+            </div>
+            {errors}
+            <button className="uppercase border-2 border-black p-1 mt-2 mb-8 font-bold hover:bg-yellow-300">
+              Sign Up &gt;
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
