@@ -1,3 +1,11 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.mont-alternates {
+  font-family: 'Montserrat Alternates', sans-serif;
+}
