@@ -1,7 +1,7 @@
 //import React from 'react';
 import { useState } from 'react';
 import useRequest from './hooks/use-request';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
@@ -26,17 +26,26 @@ export default () => {
 
   return (
     <div className="relative">
-      <div className=" bg-yellow-300 h-44 py-14">
-        <h2 className="text-center text-3xl font-bold mont-alternates ">
-          topiks
-        </h2>
-        <p className="py-4 text-center text-xl">
+      <div className=" bg-yellow-300 h-64 py-14">
+        <Link to="/">
+          <h2 className="text-center text-3xl font-bold mont-alternates ">
+            topiks
+          </h2>
+        </Link>
+        <p className="py-4 text-center text-xl font-bold">
           Create your first sticky note board
         </p>
       </div>
       <div className="absolute top-36 flex justify-center w-full">
-        <div className=" bg-white w-4/5 lg:w-3/5 p-6 space-y-6 justify-items-center rounded-lg shadow-lg">
-          <h1 className="text-3xl font-bold">Sign Up</h1>
+        <div className=" bg-white w-4/5 lg:w-1/2 p-6 space-y-6 justify-items-center rounded-lg shadow-lg">
+          <div className="flex justify-between">
+            <h1 className="text-3xl font-bold">Sign Up</h1>
+            <Link to="/signin">
+              <h2 className="text-gray-600">
+                or <span className="uppercase">sign in</span>
+              </h2>
+            </Link>
+          </div>
           <form onSubmit={onSubmit} className="space-y-4">
             <div className="flex flex-col">
               <label className="text-gray-600	">Email Address</label>
