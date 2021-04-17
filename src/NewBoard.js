@@ -6,29 +6,25 @@ import axios from 'axios';
 export default () => {
   let history = useHistory();
   const [name, setName] = useState('');
-  let user = {};
-  const currentUser = async () => {
-    user = await axios.get('http://localhost:3000/api/users/currentuser', {
-      withCredentials: true,
-    });
-    console.log(user);
-  };
-  {
-    currentUser();
-  }
-  const { doRequest, errors } = useRequest({
-    url: `http://localhost:3000/api/workspace/${user._id}`,
-    method: 'post',
-    body: {
-      name,
-    },
-    onSuccess: () => history.push('/'),
-  });
 
   const onSubmit = async (event) => {
     event.preventDefault();
-
-    await doRequest();
+    let response = await axios.get(
+      'http://localhost:3000/api/users/currentuser',
+      {
+        withCredentials: true,
+      }
+    );
+    const url =
+      'http://localhost:3000/api/workspaces/' + response.data.currentUser.id;
+    console.log(url);
+    await axios.post(
+      url,
+      { name },
+      {
+        withCredentials: true,
+      }
+    );
   };
   return (
     <div>
@@ -41,7 +37,6 @@ export default () => {
             className="border border-gray-300"
           />
         </div>
-        {errors}
         <button className="uppercase border-2 border-black p-1 mt-2 mb-8 font-bold hover:bg-yellow-300">
           create &gt;
         </button>
