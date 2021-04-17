@@ -17,7 +17,6 @@ export default () => {
     );
     const url =
       'http://localhost:3000/api/workspaces/' + response.data.currentUser.id;
-    console.log(url);
     await axios.post(
       url,
       { name },
@@ -25,6 +24,7 @@ export default () => {
         withCredentials: true,
       }
     );
+    history.push('/dashboard/' + response.data.currentUser.id); //Poner esto en OnSuccess
   };
   return (
     <div>
