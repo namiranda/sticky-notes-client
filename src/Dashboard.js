@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
@@ -22,10 +23,49 @@ export default () => {
 
   const renderedWorkspace = Object.values(workspaces).map((workspace) => {
     return (
-      <div key={workspace._id}>
-        <h2>{workspace.name}</h2>
+      <div
+        className="border border-black m-4 flex justify-between transform hover:shadow-md hover:-translate-x-1 hover:-translate-y-1"
+        key={workspace._id}
+      >
+        <div className="p-3">
+          <h2 className="font-bold text-2xl">{workspace.name}</h2>
+          <h3 className="italic">
+            Created <span></span> ago
+          </h3>
+          <h3 className="italic">
+            Modified <span></span> ago
+          </h3>
+        </div>
+        <div className="flex flex-col p-3 justify-center space-y-2">
+          <button className="uppercase font-bold text-base">[Invite]</button>
+          <button className="uppercase font-bold text-base">[Delete]</button>
+        </div>
       </div>
     );
   });
-  return <div className="">{renderedWorkspace}</div>;
+  return (
+    <div className="">
+      <div className=" bg-yellow-300 h-28 py-14">
+        <Link to="/">
+          <h2 className="text-center text-3xl font-bold mont-alternates ">
+            topiks
+          </h2>
+        </Link>
+      </div>
+      <div className="flex justify-between m-4">
+        <div>
+          <h1 className="text-6xl text-indigo-900">Boards</h1>
+          <h2 className="text-gray-700">Welcome to your dashboard</h2>
+        </div>
+        <div>
+          <Link to="/newboard">
+            <button className="uppercase border-2 border-black p-1 mt-2 mb-8 font-bold hover:bg-yellow-300">
+              create &gt;
+            </button>
+          </Link>
+        </div>
+      </div>
+      <div>{renderedWorkspace}</div>
+    </div>
+  );
 };
