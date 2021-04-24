@@ -8,6 +8,7 @@ import Signin from './Signin';
 import Landing from './Landing';
 import NewBoard from './NewBoard';
 import Dashboard from './Dashboard';
+import Workspace from './Workspace';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -17,6 +18,7 @@ ReactDOM.render(
       <Route path="/signup" component={Signup} />
       <Route path="/newboard" component={NewBoard} />
       <Route path="/dashboard/:id" component={Dashboard} />
+      <Route path="/:id/workspaces/:wp_id" component={Workspace} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
