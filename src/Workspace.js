@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import socketIoClient from 'socket.io-client';
 
-const socket = socketIoClient('http://localhost:3000', { autoConnect: false });
+//TODO: Sacar workspace id hardcodeado
+//Solucionar el resto de errores
 
+const socket = socketIoClient('http://localhost:3000', { autoConnect: false });
+const ws_id = '60835b72b6f8c61c5885934a';
 const Note = ({ note }) => {
   return (
     <div className="note">
@@ -21,7 +24,8 @@ const TextBox = () => {
 
     if (!value) return;
 
-    socket.emit('message', value);
+    socket.emit('message', ws_id, value);
+    console.log(value);
 
     setValue('');
   };
