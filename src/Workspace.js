@@ -12,7 +12,7 @@ const ws_id = '60835b72b6f8c61c5885934a';
 
 const Note = ({ note }) => {
   return (
-    <div className="bg-yellow-500">
+    <div className="bg-yellow-500 w-48 h-48 m-8 flex items-center justify-center shadow-lg hover:shadow-2xl">
       {console.log('en note')}
       <h2>{note}</h2>
     </div>
@@ -31,15 +31,17 @@ const TextBox = () => {
     setValue('');
   };
   return (
-    <form onSubmit={postNote}>
-      <input
-        type="text"
-        className="input"
-        placeholder="Your notes"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-    </form>
+    <div className="w-48 h-48 m-8 bg-green-300 flex items-center">
+      <form onSubmit={postNote}>
+        <input
+          type="text"
+          className="input bg-green-300 w-44 text-center "
+          placeholder="Your notes..."
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+      </form>
+    </div>
   );
 };
 
@@ -63,15 +65,15 @@ const Workspace = () => {
   }, []);
 
   return (
-    <div className="bg-red-400">
-      <div>
+    <div className="bg-gray-100">
+      <TextBox />
+      <div className="flex flex-row flex-wrap">
         {Array.from(notes)
           .reverse()
           .map((note) => (
             <Note key={note._id} note={note.content} />
           ))}
       </div>
-      <TextBox />
     </div>
   );
 };
