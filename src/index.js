@@ -18,7 +18,7 @@ ReactDOM.render(
       <Route path="/signup" component={Signup} />
       <Route path="/newboard" component={NewBoard} />
       <Route path="/dashboard/:id" component={Dashboard} />
-      <Route path="/:id/workspaces/:wp_id" component={Workspace} />
+      <Route path="/:id/workspaces/:ws_id" component={Workspace} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')

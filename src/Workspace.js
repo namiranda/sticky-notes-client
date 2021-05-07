@@ -1,32 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import socketIoClient from 'socket.io-client';
-
-//TODO: Sacar workspace id hardcodeado
-//Solucionar el resto de errores
 
 const socket = socketIoClient('http://localhost:3000', {
   autoConnect: false,
 });
-const ws_id = '60835b72b6f8c61c5885934a';
 
 const Note = ({ note }) => {
   return (
-    <div className="bg-yellow-500 w-48 h-48 m-8 flex items-center justify-center shadow-lg hover:shadow-2xl">
-      {console.log('en note')}
-      <h2>{note}</h2>
+    <div className="bg-yellow-500 transform skew-x-1 hover:skew-x-2 w-48 h-48 m-8 flex items-center justify-center shadow-lg hover:shadow-2xl">
+      <p>{note.content}</p>
     </div>
   );
 };
-const TextBox = () => {
+
+const TextBox = (ws_id) => {
   const [value, setValue] = useState('');
 
   const postNote = (e) => {
     e.preventDefault();
 
     if (!value) return;
-
-    socket.emit('new note', ws_id, value);
+    socket.emit('new note', ws_id.ws_id, value);
 
     setValue('');
   };
@@ -46,6 +42,7 @@ const TextBox = () => {
 };
 
 const Workspace = () => {
+  let { ws_id } = useParams(); //Workspace id
   const [notes, setNotes] = useState([]);
   const addNote = (note) => {
     setNotes((oldNotes) => [...oldNotes, note]);
@@ -66,12 +63,12 @@ const Workspace = () => {
 
   return (
     <div className="bg-gray-100">
-      <TextBox />
+      <TextBox ws_id={ws_id} />
       <div className="flex flex-row flex-wrap">
         {Array.from(notes)
           .reverse()
           .map((note) => (
-            <Note key={note._id} note={note.content} />
+            <Note key={note._id} note={note} />
           ))}
       </div>
     </div>
