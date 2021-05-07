@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default () => {
+const Dashboard = () => {
   const [workspaces, setWorkspaces] = useState({});
+  let { id } = useParams(); //user id
 
   const fetchWorkspaces = async () => {
-    let user = await axios.get('http://localhost:3000/api/users/currentuser', {
-      withCredentials: true,
-    });
-    const url =
-      'http://localhost:3000/api/workspaces/' + user.data.currentUser.id;
+    const url = 'http://localhost:3000/api/workspaces/' + id;
     const response = await axios.get(url);
 
     setWorkspaces(response.data);
@@ -69,3 +66,4 @@ export default () => {
     </div>
   );
 };
+export default Dashboard;

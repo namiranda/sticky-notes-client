@@ -1,4 +1,5 @@
 //import React from 'react';
+import axios from 'axios';
 import { useState } from 'react';
 import useRequest from './hooks/use-request';
 import { useHistory, Link } from 'react-router-dom';
@@ -15,7 +16,16 @@ export default () => {
       email,
       password,
     },
-    onSuccess: () => history.push('/'),
+    onSuccess: async () => {
+      let user = await axios.get(
+        'http://localhost:3000/api/users/currentuser',
+        {
+          withCredentials: true,
+        }
+      );
+
+      history.push(`/dashboard/${user.data.currentUser.id}`);
+    },
   });
 
   const onSubmit = async (event) => {
