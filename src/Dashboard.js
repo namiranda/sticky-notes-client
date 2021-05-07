@@ -25,7 +25,9 @@ const Dashboard = () => {
         key={workspace._id}
       >
         <div className="p-3">
-          <h2 className="font-bold text-2xl">{workspace.name}</h2>
+          <Link to={'/' + id + '/workspaces/' + workspace._id}>
+            <h2 className="font-bold text-2xl">{workspace.name}</h2>
+          </Link>
           <h3 className="italic">
             Created <span></span> ago
           </h3>

@@ -49,6 +49,8 @@ const Workspace = () => {
   };
 
   useEffect(() => {
+    // clean up controller
+    let isSubscribed = true;
     socket.on('new note', (note) => {
       addNote(note);
     });
@@ -59,6 +61,8 @@ const Workspace = () => {
     });
 
     socket.connect();
+    // cancel subscription to useEffect
+    return () => (isSubscribed = false);
   }, []);
 
   return (
