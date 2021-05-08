@@ -18,6 +18,14 @@ const Dashboard = () => {
     fetchWorkspaces();
   }, []);
 
+  const onSubmit = async (event, ws_id) => {
+    event.preventDefault();
+
+    await axios.delete(`http://localhost:3000/api/workspaces/${id}/${ws_id}`);
+
+    window.location.reload();
+  };
+
   const renderedWorkspace = Object.values(workspaces).map((workspace) => {
     return (
       <div
@@ -37,7 +45,9 @@ const Dashboard = () => {
         </div>
         <div className="flex flex-col p-3 justify-center space-y-2">
           <button className="uppercase font-bold text-base">[Invite]</button>
-          <button className="uppercase font-bold text-base">[Delete]</button>
+          <form onSubmit={(event) => onSubmit(event, workspace._id)}>
+            <button className="uppercase font-bold text-base">[Delete]</button>
+          </form>
         </div>
       </div>
     );
