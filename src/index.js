@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Signup from './Signup';
 import Signin from './Signin';
-import Landing from './Landing';
+import Logout from './Logout';
 import NewBoard from './NewBoard';
 import Dashboard from './Dashboard';
 import Workspace from './Workspace';
@@ -19,6 +19,7 @@ ReactDOM.render(
       <Route path="/newboard" component={NewBoard} />
       <Route path="/dashboard/:id" component={Dashboard} />
       <Route path="/:id/workspaces/:ws_id" component={Workspace} />
+      <Route path="/signout" component={Logout} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
