@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import InviteButton from './InviteButton';
+import NavBar from './NavBar';
 
-// eslint-disable-next-line import/no-anonymous-default-export
 const Dashboard = () => {
   const [workspaces, setWorkspaces] = useState({});
   let { id } = useParams(); //user id
@@ -55,13 +55,7 @@ const Dashboard = () => {
   });
   return (
     <div className="">
-      <div className=" bg-yellow-300 h-28 py-14">
-        <Link to="/">
-          <h2 className="text-center text-3xl font-bold mont-alternates ">
-            topiks
-          </h2>
-        </Link>
-      </div>
+      <NavBar />
       <div className="flex justify-between m-4">
         <div>
           <h1 className="text-6xl text-indigo-900">Boards</h1>

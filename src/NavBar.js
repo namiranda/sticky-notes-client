@@ -29,14 +29,14 @@ const NavBar = () => {
     .filter((linkConfig) => linkConfig)
     .map(({ label, href }) => {
       return (
-        <li key={href} className="">
+        <li key={href} className="mx-3 ">
           <Link to={href}>{label}</Link>
         </li>
       );
     });
 
   return (
-    <nav className="bg-yellow-300 h-20 md:flex md:flex-row md:justify-between md:px-6 items-center">
+    <nav className="bg-yellow-300 h-20 flex flex-row justify-between px-4 md:px-6 items-center">
       <Link className="text-center text-3xl font-bold mont-alternates " to="/">
         topiks
       </Link>
