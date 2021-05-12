@@ -5,7 +5,7 @@ import useRequest from './hooks/use-request';
 const Logout = () => {
   let history = useHistory();
   const { doRequest } = useRequest({
-    url: 'http://localhost:3000/api/users/signout',
+    url: 'https://topiksapi.herokuapp.com/api/users/signout',
     method: 'post',
     body: {},
     onSuccess: () => history.push('/'),

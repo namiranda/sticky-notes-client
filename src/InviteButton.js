@@ -18,7 +18,7 @@ const InviteButton = (props) => {
           <h4>Get Link</h4>
           <CopyToClipboard
             text={
-              'http://localhost:1234/' +
+              'https://stickytopiks.netlify.app/' +
               props.id +
               '/workspaces/' +
               props.workspace._id

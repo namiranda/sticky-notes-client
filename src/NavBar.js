@@ -7,7 +7,7 @@ const NavBar = () => {
 
   const fetchLinks = async () => {
     let response = await axios.get(
-      'http://localhost:3000/api/users/currentuser',
+      'https://topiksapi.herokuapp.com/api/users/currentuser',
       {
         withCredentials: true,
       }
