@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
+import NavBar from './NavBar';
 
-export default () => {
+const NewBoard = () => {
   let history = useHistory();
   const [name, setName] = useState('');
 
@@ -28,13 +29,7 @@ export default () => {
   };
   return (
     <div>
-      <div className=" bg-yellow-300 h-28 py-14">
-        <Link to="/">
-          <h2 className="text-center text-3xl font-bold mont-alternates ">
-            topiks
-          </h2>
-        </Link>
-      </div>
+      <NavBar />
       <div className="m-5 md:ml-20 lg:ml-36 space-y-6 lg:w-1/2">
         <h2 className="text-6xl text-indigo-900">New Board</h2>
         <p className="text-gray-700">
@@ -64,3 +59,4 @@ export default () => {
     </div>
   );
 };
+export default NewBoard;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import NavBar from './NavBar';
 
 import socketIoClient from 'socket.io-client';
 
@@ -66,7 +67,8 @@ const Workspace = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100">
+    <div>
+      <NavBar />
       <TextBox ws_id={ws_id} />
       <div className="flex flex-row flex-wrap">
         {Array.from(notes)
