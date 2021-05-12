@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
+import InviteButton from './InviteButton';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 const Dashboard = () => {
   const [workspaces, setWorkspaces] = useState({});
   let { id } = useParams(); //user id
-
   const fetchWorkspaces = async () => {
     const url = 'http://localhost:3000/api/workspaces/' + id;
     const response = await axios.get(url);
@@ -44,7 +44,8 @@ const Dashboard = () => {
           </h3>
         </div>
         <div className="flex flex-col p-3 justify-center space-y-2">
-          <button className="uppercase font-bold text-base">[Invite]</button>
+          <InviteButton id={id} workspace={workspace} />
+
           <form onSubmit={(event) => onSubmit(event, workspace._id)}>
             <button className="uppercase font-bold text-base">[Delete]</button>
           </form>
