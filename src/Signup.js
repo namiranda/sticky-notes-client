@@ -9,7 +9,7 @@ export default () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { doRequest, errors } = useRequest({
-    url: 'http://localhost:3000/api/users/signup',
+    url: 'https://topiksapi.herokuapp.com/api/users/signup',
     method: 'post',
     body: {
       email,

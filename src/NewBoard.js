@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import useRequest from './hooks/use-request';
 import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -10,13 +9,14 @@ export default () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     let response = await axios.get(
-      'http://localhost:3000/api/users/currentuser',
+      'https://topiksapi.herokuapp.com/api/users/currentuser',
       {
         withCredentials: true,
       }
     );
     const url =
-      'http://localhost:3000/api/workspaces/' + response.data.currentUser.id;
+      'https://topiksapi.herokuapp.com/api/workspaces/' +
+      response.data.currentUser.id;
     await axios.post(
       url,
       { name },

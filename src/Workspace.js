@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import socketIoClient from 'socket.io-client';
 
-const socket = socketIoClient('http://localhost:3000', {
+const socket = socketIoClient('https://topiksapi.herokuapp.com/', {
   autoConnect: false,
 });
 

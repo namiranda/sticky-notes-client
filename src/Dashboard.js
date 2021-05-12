@@ -8,7 +8,7 @@ const Dashboard = () => {
   let { id } = useParams(); //user id
 
   const fetchWorkspaces = async () => {
-    const url = 'http://localhost:3000/api/workspaces/' + id;
+    const url = 'https://topiksapi.herokuapp.com/api/workspaces/' + id;
     const response = await axios.get(url);
 
     setWorkspaces(response.data);
@@ -21,7 +21,9 @@ const Dashboard = () => {
   const onSubmit = async (event, ws_id) => {
     event.preventDefault();
 
-    await axios.delete(`http://localhost:3000/api/workspaces/${id}/${ws_id}`);
+    await axios.delete(
+      `https://topiksapi.herokuapp.com/api/workspaces/${id}/${ws_id}`
+    );
 
     window.location.reload();
   };
