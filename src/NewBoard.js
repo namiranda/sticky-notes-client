@@ -9,15 +9,10 @@ const NewBoard = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    let response = await axios.get(
-      'https://topiksapi.herokuapp.com/api/users/currentuser',
-      {
-        withCredentials: true,
-      }
-    );
-    const url =
-      'https://topiksapi.herokuapp.com/api/workspaces/' +
-      response.data.currentUser.id;
+    let response = await axios.get('/api/users/currentuser', {
+      withCredentials: true,
+    });
+    const url = '/api/workspaces/' + response.data.currentUser.id;
     await axios.post(
       url,
       { name },

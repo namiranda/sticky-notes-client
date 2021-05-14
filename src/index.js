@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 
 import Signup from './Signup';
 import Signin from './Signin';
@@ -9,6 +10,8 @@ import Logout from './Logout';
 import NewBoard from './NewBoard';
 import Dashboard from './Dashboard';
 import Workspace from './Workspace';
+
+axios.defaults.baseURL = 'https://topiksapi.herokuapp.com';
 
 ReactDOM.render(
   <BrowserRouter>

@@ -10,19 +10,16 @@ export default () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { doRequest, errors } = useRequest({
-    url: 'https://topiksapi.herokuapp.com/api/users/signin',
+    url: '/api/users/signin',
     method: 'post',
     body: {
       email,
       password,
     },
     onSuccess: async () => {
-      let user = await axios.get(
-        'https://topiksapi.herokuapp.com/api/users/currentuser',
-        {
-          withCredentials: true,
-        }
-      );
+      let user = await axios.get('/api/users/currentuser', {
+        withCredentials: true,
+      });
 
       history.push(`/dashboard/${user.data.currentUser.id}`);
     },

@@ -6,12 +6,9 @@ const NavBar = () => {
   const [links, setLinks] = useState([]);
 
   const fetchLinks = async () => {
-    let response = await axios.get(
-      'https://topiksapi.herokuapp.com/api/users/currentuser',
-      {
-        withCredentials: true,
-      }
-    );
+    let response = await axios.get('/api/users/currentuser', {
+      withCredentials: true,
+    });
 
     const links = [
       !response.data.currentUser && { label: 'Sign Up', href: '/signup' },
