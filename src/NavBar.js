@@ -13,11 +13,11 @@ const NavBar = () => {
     const links = [
       !response.data.currentUser && { label: 'Sign Up', href: '/signup' },
       !response.data.currentUser && { label: 'Sign In', href: '/signin' },
-      response.data.currentUser && { label: 'Sign Out', href: '/signout' },
       response.data.currentUser && {
         label: 'Dashboard',
         href: `/dashboard/${response.data.currentUser.id}`,
       },
+      response.data.currentUser && { label: 'Sign Out', href: '/signout' },
     ];
     setLinks(links);
   };
