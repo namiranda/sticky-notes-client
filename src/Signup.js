@@ -64,7 +64,7 @@ export default () => {
                 className="border border-gray-300"
               />
             </div>
-            {/*  {errors} */}
+            {errors}
             <button className="uppercase border-2 border-black p-1 mt-2 mb-8 font-bold hover:bg-yellow-300">
               Sign Up &gt;
             </button>
