@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import InviteButton from './InviteButton';
 import NavBar from './NavBar';
+import TimeAgo from 'timeago-react';
 
 const Dashboard = () => {
   const [workspaces, setWorkspaces] = useState({});
@@ -37,10 +38,11 @@ const Dashboard = () => {
             <h2 className="font-bold text-2xl">{workspace.name}</h2>
           </Link>
           <h3 className="italic">
-            Created <span></span> ago
+            Created&nbsp;
+            <TimeAgo datetime={workspace.date} locale="en_US" />
           </h3>
           <h3 className="italic">
-            Modified <span></span> ago
+            Modified <TimeAgo datetime={workspace.modified} locale="en_US" />
           </h3>
         </div>
         <div className="flex flex-col p-3 justify-center space-y-2">
