@@ -8,10 +8,25 @@ const socket = socketIoClient('https://topiksapi.herokuapp.com/', {
   autoConnect: false,
 });
 
-const Note = ({ note }) => {
+const Note = ({ note, ws_id }) => {
+  const deleteNote = (e) => {
+    e.preventDefault();
+
+    socket.emit('delete note', ws_id, note._id);
+  };
+
   return (
-    <div className="bg-yellow-500 transform skew-x-1 hover:skew-x-2 w-48 h-48 m-8 flex items-center justify-center shadow-lg hover:shadow-2xl">
-      <p>{note.content}</p>
+    <div className="relative bg-yellow-500 transform skew-x-1 hover:skew-x-2 w-48 h-48 m-8 flex items-center justify-center shadow-lg hover:shadow-2xl">
+      <div className="absolute top-1 right-1">
+        <form onSubmit={deleteNote}>
+          <button className="h-4 w-4 font-bold text-xs bg-black text-white rounded-full hover:bg-red-600 ">
+            x
+          </button>
+        </form>
+      </div>
+      <div>
+        <p>{note.content}</p>
+      </div>
     </div>
   );
 };
@@ -48,6 +63,11 @@ const Workspace = () => {
   const addNote = (note) => {
     setNotes((oldNotes) => [...oldNotes, note]);
   };
+  const deleteNote = (note_id) => {
+    setNotes((oldNotes) =>
+      [...oldNotes].filter((oldNote) => oldNote._id !== note_id)
+    );
+  };
 
   useEffect(() => {
     // clean up controller
@@ -60,7 +80,9 @@ const Workspace = () => {
       // expect server to send us the old notes
       setNotes(Array.from(data));
     });
-
+    socket.on('delete note', (note_id) => {
+      deleteNote(note_id);
+    });
     socket.connect();
     // cancel subscription to useEffect
     return () => (isSubscribed = false);
@@ -74,7 +96,7 @@ const Workspace = () => {
         {Array.from(notes)
           .reverse()
           .map((note) => (
-            <Note key={note._id} note={note} />
+            <Note key={note._id} note={note} ws_id={ws_id} />
           ))}
       </div>
     </div>
