@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import NavBar from './NavBar';
+import TimeAgo from 'timeago-react';
 
 import socketIoClient from 'socket.io-client';
 
@@ -16,7 +17,7 @@ const Note = ({ note, ws_id }) => {
   };
 
   return (
-    <div className="relative bg-yellow-500 transform skew-x-1 hover:skew-x-2 w-48 h-48 m-8 flex items-center justify-center shadow-lg hover:shadow-2xl">
+    <div className="relative bg-yellow-500 transform rotate-2 hover:rotate-1 w-48 h-48 m-8 flex items-center justify-center shadow-lg hover:shadow-2xl">
       <div className="absolute top-1 right-1">
         <form onSubmit={deleteNote}>
           <button className="h-4 w-4 font-bold text-xs bg-black text-white rounded-full hover:bg-red-600 ">
@@ -24,8 +25,11 @@ const Note = ({ note, ws_id }) => {
           </button>
         </form>
       </div>
-      <div>
+      <div className="px-4">
         <p>{note.content}</p>
+      </div>
+      <div className="absolute bottom-1 text-xs">
+        <TimeAgo datetime={note.date} locale="en_US" />
       </div>
     </div>
   );

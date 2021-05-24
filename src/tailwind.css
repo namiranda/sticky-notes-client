@@ -798,6 +798,10 @@ video {
   right: 0.25rem;
 }
 
+.bottom-1 {
+  bottom: 0.25rem;
+}
+
 .top-32 {
   top: 8rem;
 }
@@ -902,20 +906,20 @@ video {
   transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.rotate-2 {
+  --tw-rotate: 2deg;
+}
+
+.hover\:rotate-1:hover {
+  --tw-rotate: 1deg;
+}
+
 .hover\:-translate-x-1:hover {
   --tw-translate-x: -0.25rem;
 }
 
 .hover\:-translate-y-1:hover {
   --tw-translate-y: -0.25rem;
-}
-
-.skew-x-1 {
-  --tw-skew-x: 1deg;
-}
-
-.hover\:skew-x-2:hover {
-  --tw-skew-x: 2deg;
 }
 
 @-webkit-keyframes spin {
